@@ -67,7 +67,7 @@ function MyDB() {
     }
   };
 
-  // creat recipe
+  // create recipe
   myDB.createRecipe = async (recipe) => {
     let client;
     try {
@@ -83,7 +83,7 @@ function MyDB() {
     }
   };
 
-  // creat comment
+  // create comment
   myDB.writeComment = async (recipeId, comment, username) => {
     console.log(recipeId, comment);
     let client;

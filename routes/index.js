@@ -40,25 +40,24 @@ router.get("/logout", async(req, res) => {
   });
 });
 
+// get users
 router.get("/getUsers", async (req, res) => {
   const users = await myDB.searchUser({username: req.query.username});
   res.send({ users });
 });
 
 
-//creat recipe
+// create recipe
 router.post("/createRecipe", async (req, res) => {
   let uploadPath;
-
   const recipe = req.body;
-
   console.log("...", req.body);
   console.log(req.files);
-  // return res.send({success: true});
+
   const image = req.files.image;
   recipe.img = '/images/' + image.name;
 
-  const newRecipe = await myDB.createRecipe(recipe);
+  await myDB.createRecipe(recipe);
 
   uploadPath = __dirname + '/../public/images/' + image.name;
 
@@ -66,12 +65,9 @@ router.post("/createRecipe", async (req, res) => {
     if (err) {
       return res.status(500).send(err);
     }
-
-    res.send({success: true});
+    res.redirect("/viewRecipe.html");
   });
 });
-
-
 
 
 // recipe created
