@@ -10,8 +10,10 @@
     "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www",
     "heroku-postbuild": "npm run build"
   },
-  "keywords": ["recipes"],
-  "author": "Wenzhu Chen & Xiaoyan Qin", 
+  "keywords": [
+    "recipes"
+  ],
+  "author": "Wenzhu Chen & Xiaoyan Qin",
   "license": "MIT",
   "dependencies": {
     "cookie-parser": "~1.4.4",
