@@ -2,6 +2,10 @@
   "name": "recipeapp",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "npm": "7.5.0",
+    "node": "15.7.0"
+  },
   "scripts": {
     "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www"
   },
