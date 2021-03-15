@@ -16,6 +16,10 @@
 
   <body>
     <div class="container">
+
+       
+
+
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="./viewRecipe.html">View Recipe List</a>
@@ -55,16 +59,15 @@
 
         <form id = "formCreate"
         enctype="multipart/form-data"
-        >
-                  <!-- action="./createRecipe"
+        action="./createRecipe"
       method="post"
-      enctype="multipart/form-data" -->
+        >
           <label class="form-label"
             >Title: <input class="form-control" type="text" name="title"
           /></label>
           <br></br>
           <label class="form-label"
-            >Ingredients Needed:
+            >Materials Needed:
             <input class="form-control" type="text" name="materials"
           /></label>
           <label class="form-label"
@@ -73,7 +76,7 @@
             <textarea name="content" rows="5" cols="50"></textarea>
           </label>
           <label class="form-label" 
-            >Photo: <input class="form-control" name="img" id="image-upload"
+            >Photo: <input class="form-control" type="file" name="image" id="image-upload"
           /></label>
           <button type="submit" class="btn btn-primary">Create</button>
         </form>

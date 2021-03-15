@@ -48,16 +48,31 @@ router.get("/getUsers", async (req, res) => {
 
 //creat recipe
 router.post("/createRecipe", async (req, res) => {
-  console.log(req);
+  let uploadPath;
 
   const recipe = req.body;
+
+  console.log("...", req.body);
+  console.log(req.files);
+  // return res.send({success: true});
+  const image = req.files.image;
+  recipe.img = '/images/' + image.name;
+
   const newRecipe = await myDB.createRecipe(recipe);
 
-  if(newRecipe) {
-    req.session.recipe = recipe;
-    return res.send({success: true});
-  }
+  uploadPath = __dirname + '/../public/images/' + image.name;
+
+  image.mv(uploadPath, function(err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    res.send({success: true});
+  });
 });
+
+
+
 
 // recipe created
 router.get("/getRecipes", async (req, res) => {
@@ -78,22 +93,5 @@ router.post("/writeComment", async(req, res) => {
   await myDB.writeComment(req.body.recipeId, req.body.comment, req.session.userInfo.username);
   res.send({success: true});
 });
-
-
-
-// router.post("/writeComment", async(req, res) => {
-//   // if(!req.session.userInfo) {
-//   //   return res.redirect("/index.html");
-//   // } 
-//   const comment_body = req.body;
-//   const recipe_find = await myDB.getRecipe({title: comment_body.} {
-//     recipe_name: req.body.recipe_name,
-//   });
-//   const usr = req.session.username;
-//   await writeComment(client, "Recipes", recipe_find[0], {
-//     $push : {comments: { [usr]: comment_body}},
-//   });
-//   res.send({success: true});
-// });
 
 module.exports = router;

@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const logger = require("morgan");
 require("dotenv").config();
+const fileUpload = require('express-fileupload');
 
 
 const indexRouter = require("./routes/index");
@@ -31,6 +32,7 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 app.use(express.static(path.join(__dirname, "public")));
+app.use(fileUpload());
 app.use("/", indexRouter);
 
 module.exports = app;
