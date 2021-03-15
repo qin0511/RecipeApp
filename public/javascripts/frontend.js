@@ -39,9 +39,7 @@ async function handleLoginSubmit(evt) {
   });
   const res = await response.json();
   if (res && res.success) {
-    //alert("success!");
     window.location.href = "/viewRecipe.html";
-    // todo redirect to other page
   } else {
     errorText.innerHTML = res.message || "sign in failed!";
   }
@@ -67,9 +65,7 @@ async function handleRegistSubmit(evt) {
   });
   const res = await response.json();
   if (res && res.success) {
-    //alert("success!");
     window.location.href = "/index.html";
-    // todo redirect to other page
   } else {
     errorText.innerHTML = res.message || "sign up failed!";
   }

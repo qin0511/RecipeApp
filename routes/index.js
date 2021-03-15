@@ -47,12 +47,16 @@ router.get("/getUsers", async (req, res) => {
 });
 
 
+
+
 // create recipe
 router.post("/createRecipe", async (req, res) => {
+  if(!req.session.userInfo) {
+    res.redirect("/index.html");
+  // res.status(401).send({ success: false });
+  } 
   let uploadPath;
   const recipe = req.body;
-  console.log("...", req.body);
-  console.log(req.files);
 
   const image = req.files.image;
   recipe.img = '/images/' + image.name;
